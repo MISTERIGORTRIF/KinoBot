@@ -64,9 +64,11 @@ def playbill(cinema):
         # if pointer == 0 and (soup.findAll('span', class_='week_num')[0].text == str(datePars.add_day())[6:]):
         #     return 'Кажется нет расписания...'
 
+        #print(pointer, " - ", Day_name, " - ", soup.findAll('span', class_='week_num')[0].text, " - ", datePars.timer()[6:])
+
         if pointer == 0 and Day_name == "Завтра" and (datePars.timer()[6:] != soup.findAll('span', class_='week_num')[0].text):
             return 'Кажется нет расписания...'
-        elif pointer == 0 and Day_name == "Сегодня" and (datePars.timer()[6:] == soup.findAll('span', class_='week_num')[0].text):
+        elif pointer == 0 and Day_name == "Сегодня" and (int(datePars.timer()[6:]) == int(soup.findAll('span', class_='week_num')[0].text)):
             Day_name = 'Сегодня'
             chislo = datePars.timer()[6:]
         else:
